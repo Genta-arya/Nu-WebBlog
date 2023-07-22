@@ -16,7 +16,7 @@ export const login = async (email, password) => {
 
 export const getPostings = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/posting`);
+    const response = await axios.get(`https://api-blog-2coesnsgf-genta-arya.vercel.app/posting`);
     return response.data;
   } catch (error) {
     console.error('Error:', error);
@@ -26,7 +26,7 @@ export const getPostings = async () => {
 
 export const getPostingById = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/posting/${id}`);
+    const response = await axios.get(`https://api-blog-2coesnsgf-genta-arya.vercel.app/posting/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error:', error);

@@ -5,17 +5,18 @@ import { useSpring, animated } from "react-spring";
 const LatestArticles = () => {
   const [latestArticles, setLatestArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const API_BASE_URL = 'https://api-blog-2coesnsgf-genta-arya.vercel.app/';
 
   useEffect(() => {
-    fetch("http://192.168.1.27:3001/posting")
+    fetch("https://api-blog-2coesnsgf-genta-arya.vercel.app/posting")
       .then((response) => response.json())
       .then((data) => {
         if (data && data.length > 0) {
-          // Sort articles by date in descending order
+      
           const sortedArticles = data.sort(
             (a, b) => new Date(b.date) - new Date(a.date)
           );
-          // Get the first three articles (latest articles)
+   
           const latestThreeArticles = sortedArticles.slice(0, 3);
           setLatestArticles(latestThreeArticles);
         }
