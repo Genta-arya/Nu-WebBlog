@@ -7,7 +7,7 @@ const LatestArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://192.168.1.27:3001/posting")
+    fetch("https://api-blog-2coesnsgf-genta-arya.vercel.app/posting")
       .then((response) => response.json())
       .then((data) => {
         if (data && data.length > 0) {
