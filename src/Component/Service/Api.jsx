@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api-blog-aga9q4zut-genta-arya.vercel.app/';
+const API_BASE_URL = 'https://api-blog-2coesnsgf-genta-arya.vercel.app/';
 
 // Fungsi untuk melakukan permintaan login
 export const login = async (email, password) => {
