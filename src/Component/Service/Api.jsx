@@ -36,7 +36,7 @@ export const getPostingById = async (id) => {
 
 export const getPostingByCategory = async (category) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/posting/category/${category}`);
+    const response = await axios.get(`https://api-blog-2coesnsgf-genta-arya.vercel.app/posting/category/${category}`);
     return response.data;
   } catch (error) {
     console.error('Error:', error);
