@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import logo from "../../../Asset/Header.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { login, getPostings } from "../../Service/Api";
 import Navbar from "./Navbars";
@@ -45,7 +45,9 @@ const SearchNavbar = ({ setCategoryFilter, setSearchQuery, postings }) => {
             className="bg-white text-gray-800 rounded-l px-4 py-2 focus:outline-none"
             onChange={handleSearch}
           />
-         
+          <div className="bg-white text-gray-800 rounded-r px-4 py-2 ml-0 focus:outline-none">
+            <FontAwesomeIcon icon={faSearch} />
+          </div>
         </div>
         {isMobile ? (
           <div className="flex flex-row mt-2 sm:mt-0">
