@@ -228,7 +228,7 @@ const Home = () => {
         id="header"
         className={`py-16 px-8 text-center text-white ${
           showHeader ? "header-enter header-enter-active" : "header-exit"
-        } ${"sm:min-h-screen"}`}
+        } ${"sm:h-96"}`}
         style={{
           backgroundImage: `url(${Bg})`,
           backgroundSize: "cover",
@@ -248,16 +248,15 @@ const Home = () => {
               alt="NU Image"
               className="rounded-lg shadow-md "
             />
-             <div className="-mt-40 p-8">
+            <div className="-mt-40 p-8">
               <VideoPlayer />
             </div>
             <div>
-              <JadwalSholat />
-            </div>
-            <div>
+              <div>
+                <JadwalSholat />
+              </div>
               <LatestArticle />
             </div>
-           
           </div>
 
           <div className="ml-12">
@@ -450,9 +449,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <div>
-       <Map />
+      <div className="mt-0">
+        <Map />
       </div>
 
       <Footer />

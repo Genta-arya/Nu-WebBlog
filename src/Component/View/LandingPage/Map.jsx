@@ -33,12 +33,10 @@ const Map = () => {
   return (
     <div className="flex justify-center items-center pl-5 pr-5 pb-1">
       <div className="w-full h-96 rounded-md overflow-hidden shadow-md border border-gray-700">
-        <MapContainer
-          center={centerCoordinates}
-          zoom={17} 
-          className="w-full h-full"
-        >
-     
+        <div className="text-center p-4 bg-gray-800 text-white font-bold">
+          Kantor NU Ketapang
+        </div>
+        <MapContainer center={centerCoordinates} zoom={17} className="w-full h-full">
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

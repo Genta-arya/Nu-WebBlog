@@ -285,7 +285,7 @@ const ArsipPage = () => {
                   <div className="mt-4 flex justify-end">
                     <Link
                       to={`/detail/${posting.id}`}
-                      className="text-blue-500 hover:underline"
+                      className="text-green-700 hover:underline"
                     >
                       Baca selengkapnya
                     </Link>

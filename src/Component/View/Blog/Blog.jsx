@@ -60,7 +60,7 @@ const SearchNavbar = ({ setCategoryFilter, setSearchQuery, postings }) => {
               </button>
 
               {showCategoryDropdown && (
-                <div className="absolute bg-white mt-2 py-2 w-32 rounded shadow-lg">
+                <div className="absolute bg-white mt-2 py-2 w-32 rounded shadow-lg max-h-40 overflow-y-auto">
                   <Link
                     to="/blog"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
@@ -133,7 +133,7 @@ const SearchNavbar = ({ setCategoryFilter, setSearchQuery, postings }) => {
               </button>
 
               {showCategoryDropdown && (
-                <div className="absolute bg-white mt-2 py-2 w-32 rounded shadow-lg">
+                <div className="absolute bg-white mt-2 py-2 w-32 rounded shadow-lg max-h-48 overflow-y-auto">
                   <Link
                     to="/blog"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
@@ -275,7 +275,11 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <div className={`flex flex-col min-h-screen ${isScrolled ? 'navbar-fixed' : ''}`}>
+    <div
+      className={`flex flex-col min-h-screen ${
+        isScrolled ? "navbar-fixed" : ""
+      }`}
+    >
       <Navbar />
       <SearchNavbar
         setCategoryFilter={setCategoryFilter}
@@ -284,9 +288,7 @@ const BlogPage = () => {
       />
       <div className="container mx-auto py-8 flex-grow">
         {filteredPostings.length === 0 ? (
-          <p className="text-center text-gray-600">
-            Artikel tidak ditemukan.
-          </p>
+          <p className="text-center text-gray-600">Artikel tidak ditemukan.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-items-center p-5">
             {filteredPostings.map((posting) => (
