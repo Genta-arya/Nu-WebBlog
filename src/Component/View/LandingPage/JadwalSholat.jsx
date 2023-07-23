@@ -14,7 +14,7 @@ const JadwalSholat = () => {
   const getTodayDate = () => {
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0"); // Month is zero-based
+    const month = String(today.getMonth() + 1).padStart(2, "0"); 
     const day = String(today.getDate()).padStart(2, "0");
     return `${year}/${month}/${day}`;
   };
@@ -25,18 +25,18 @@ const JadwalSholat = () => {
 
   const handleSearch = () => {
     setIsLoading(true);
-    const wilayahLowerCase = wilayah.toLowerCase(); // Convert to lowercase
+    const wilayahLowerCase = wilayah.toLowerCase();
     fetch(`https://api.myquran.com/v1/sholat/kota/semua`)
       .then((response) => response.json())
       .then((data) => {
         if (data && Array.isArray(data)) {
-          // Filter suggestions based on user input
+    
           const filteredSuggestions = data.filter((item) =>
             item.lokasi.toLowerCase().includes(wilayahLowerCase)
           );
           if (filteredSuggestions.length > 0) {
             setIdWilayah(filteredSuggestions[0].id);
-            setIsSuggestionClicked(true); // Set suggestion clicked state
+            setIsSuggestionClicked(true); 
           } else {
             console.error("Wilayah tidak ditemukan");
             setIsLoading(false);
@@ -59,7 +59,7 @@ const JadwalSholat = () => {
         .then((data) => {
           if (data.status && data.status === true) {
             setJadwalSholat(data.data);
-            setIsLoading(false); // Hide loading text after fetching data
+            setIsLoading(false); 
           } else {
             console.error("Data jadwal sholat tidak ditemukan");
             setIsLoading(false);
@@ -75,19 +75,17 @@ const JadwalSholat = () => {
   const handleInputChange = (event) => {
     const userInput = event.target.value;
     setWilayah(userInput);
-    setIsSuggestionClicked(false); // Reset suggestion clicked state
+    setIsSuggestionClicked(false);
 
-    // Clear jadwalSholat results when the user starts a new search
     setJadwalSholat(null);
 
-    // Fetch wilayah suggestions
     if (userInput.trim() !== "") {
-      const wilayahLowerCase = userInput.toLowerCase(); // Convert to lowercase
+      const wilayahLowerCase = userInput.toLowerCase(); 
       fetch(`https://api.myquran.com/v1/sholat/kota/semua`)
         .then((response) => response.json())
         .then((data) => {
           if (data && Array.isArray(data)) {
-            // Filter suggestions based on user input
+      
             const filteredSuggestions = data.filter((item) =>
               item.lokasi.toLowerCase().includes(wilayahLowerCase)
             );
@@ -133,8 +131,8 @@ const JadwalSholat = () => {
               key={suggestion.id}
               onClick={() => {
                 setWilayah(suggestion.lokasi);
-                setIsSuggestionClicked(true); // Set suggestion clicked state
-                setWilayahSuggestions([]); // Hide suggestions after selecting
+                setIsSuggestionClicked(true);
+                setWilayahSuggestions([]);
               }}
               className="cursor-pointer p-2 hover:bg-gray-100"
             >

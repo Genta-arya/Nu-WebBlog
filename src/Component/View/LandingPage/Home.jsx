@@ -231,16 +231,13 @@ const Home = () => {
         } ${"sm:h-96"}`}
         style={{
           backgroundImage: `url(${Bg})`,
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%", // Set the background image size to cover the entire header
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
       ></header>
 
-      <div
-        id="content-section" 
-        className="container mx-auto py-8 p-5"
-      >
+      <div id="content-section" className="container mx-auto py-8 p-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border rounded-lg shadow-lg p-8">
           <div className="">
             <img

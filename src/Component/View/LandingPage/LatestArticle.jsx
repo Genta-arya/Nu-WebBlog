@@ -25,7 +25,7 @@ const LatestArticles = () => {
       });
   }, []);
 
-  // Function to format the date (e.g., July 5, 2023)
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("en-US", options);
@@ -58,7 +58,7 @@ const LatestArticles = () => {
                   <h2 className="text-xl font-bold mt-2">{article.title}</h2>
                 </Link>
                 <p className="text-gray-500 mb-2">{formatDate(article.date)}</p>
-                <p className="text-gray-600 mb-2">Author: {article.author}</p>
+                <p className="text-gray-600 mb-2">{article.author}</p>
                 <p className="text-gray-800">
                   {article.isi.substring(0, 100)}.....
                 </p>
