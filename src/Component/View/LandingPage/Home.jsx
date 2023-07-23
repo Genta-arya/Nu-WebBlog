@@ -238,7 +238,7 @@ const Home = () => {
       ></header>
 
       <div
-        id="content-section" // Give the content section an ID
+        id="content-section" 
         className="container mx-auto py-8 p-5"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border rounded-lg shadow-lg p-8">
