@@ -159,7 +159,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-green-800 h-screen w-48 text-white fixed top-16 left-0">
+    <div className="bg-green-800 h-screen w-48 text-white fixed top-0 left-0">
       <div className="p-4">
         <ul className="mt-8 space-y-4">
           <li>
