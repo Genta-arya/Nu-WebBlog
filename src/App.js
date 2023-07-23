@@ -6,6 +6,7 @@ import BlogPage from "./Component/View/Blog/Blog";
 import DetailPage from "./Component/View/Blog/Detail";
 import ArsipPage from "./Component/View/Dashboard/Arsip";
 import Home from "./Component/View/LandingPage/Home";
+import Sejarah from "./Component/View/LandingPage/SejarahNu";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/" element={<Home />} />
+          <Route path="/sejarah-nu" element={<Sejarah />} />
           <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/arsip" element={<ArsipPage />} />
         </Routes>
