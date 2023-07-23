@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
-import L from "leaflet"; 
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import markerIcon from "../../../Asset/marker.png"; 
-
+import markerIcon from "../../../Asset/marker.png";
 
 const Map = () => {
-  const centerCoordinates = [-1.8339975213092388, 109.96645236718703];
+  const centerCoordinates = [-1.8342907881587442, 109.9663793966808];
 
-  
   const customIcon = L.icon({
     iconUrl: markerIcon,
     iconSize: [32, 32],
-    iconAnchor: [16, 32], 
-    popupAnchor: [0, -32], 
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
   });
 
   const [isAnimating, setIsAnimating] = useState(false);
 
- 
   const toggleAnimation = () => {
     setIsAnimating((prev) => !prev);
   };
 
-  
   useEffect(() => {
     const interval = setInterval(toggleAnimation, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleMarkerClick = () => {
+    const lat = centerCoordinates[0];
+    const lng = centerCoordinates[1];
+    window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank");
+  };
 
   return (
     <div className="flex justify-center items-center pl-5 pr-5 pb-1">
@@ -41,14 +43,9 @@ const Map = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
 
-          <Circle
-            center={centerCoordinates}
-            radius={55}
-            className={isAnimating ? "circle-animation" : ""}
-          />
+          <Circle center={centerCoordinates} radius={55} className={isAnimating ? "circle-animation" : ""} />
 
-        
-          <Marker position={centerCoordinates} icon={customIcon}>
+          <Marker position={centerCoordinates} icon={customIcon} eventHandlers={{ click: handleMarkerClick }}>
             <Popup>Nahdlatul Ulama Ketapang</Popup>
           </Marker>
         </MapContainer>

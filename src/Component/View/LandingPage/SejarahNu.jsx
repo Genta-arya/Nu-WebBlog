@@ -95,7 +95,7 @@ const Sejarah = () => {
               src={gambar1}
               alt="Sejarah NU Ketapang"
               className="m-5 cursor-pointer"
-              onClick={() => openModal(0)}
+              onClick={() => openModal(1)}
             />
             <div className="border p-2">
               <p className="text-center mt-4 text-sm text-gray-600 ">
