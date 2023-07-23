@@ -106,7 +106,7 @@ const JadwalSholat = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 p-4">
+    <div className="container mx-auto  -mt-44 p-4">
       <h1 className="text-3xl font-bold mb-4">Jadwal Shalat</h1>
       <div className="mb-4 flex">
         <input

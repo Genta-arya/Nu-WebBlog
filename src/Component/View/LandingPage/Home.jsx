@@ -16,6 +16,7 @@ import VideoPlayer from "./VideoPlayer";
 import { useSpring, animated } from "react-spring";
 
 import { scroller } from "react-scroll";
+import Map from "./Map";
 const SearchNavbar = ({ setCategoryFilter, setSearchQuery, postings }) => {
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showGalleryDropdown, setShowGalleryDropdown] = useState(false);
@@ -224,17 +225,18 @@ const Home = () => {
     <div>
       <Navbar />
       <header
-        id="header" // Give the header element an ID
-        className={`py-16 px-8 text-center text-white p-5 ${
+        id="header"
+        className={`py-16 px-8 text-center text-white ${
           showHeader ? "header-enter header-enter-active" : "header-exit"
-        }`}
+        } ${"sm:min-h-screen"}`}
         style={{
           backgroundImage: `url(${Bg})`,
           backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          minHeight: "500px",
         }}
       ></header>
+
       <div
         id="content-section" // Give the content section an ID
         className="container mx-auto py-8 p-5"
@@ -246,15 +248,16 @@ const Home = () => {
               alt="NU Image"
               className="rounded-lg shadow-md "
             />
+             <div className="-mt-40 p-8">
+              <VideoPlayer />
+            </div>
             <div>
               <JadwalSholat />
             </div>
             <div>
               <LatestArticle />
             </div>
-            <div className="-mt-44">
-              <VideoPlayer />
-            </div>
+           
           </div>
 
           <div className="ml-12">
@@ -447,9 +450,11 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="-mb-2">
-        <ImageCarousel />
+
+      <div>
+       <Map />
       </div>
+
       <Footer />
     </div>
   );

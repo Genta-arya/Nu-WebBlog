@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const ImageCarousel = () => {
-  const images = [
-    "https://bit.ly/43CZs77",
-
-  ];
+  const images = ["https://bit.ly/43CZs77"];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -20,14 +17,15 @@ const ImageCarousel = () => {
 
   return (
     <header
-      className="py-16 px-8 text-center text-white p-5 bg-cover bg-center md:min-h-450"
-      style={{
-        backgroundImage: `url(${images[currentIndex]})`,
-        minHeight: "250px", // Default minHeight for mobile devices
-      }}
-    >
-      {/* Add any content or components inside the header if needed */}
-    </header>
+  className="py-16 px-8 text-center text-white p-5 bg-cover bg-center md:min-h-450 sm:min-h-0"
+  style={{
+    backgroundImage: `url(${images[currentIndex]})`,
+    minHeight: "250px", // Set a minimum height for the header
+  }}
+>
+  {/* Add any content or components inside the header if needed */}
+</header>
+
   );
 };
 

@@ -1,41 +1,18 @@
-/* Home.css */
-/* ... (previously provided styles) ... */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100% = 56.25%) */
+}
 
-/* Header Animation */
-.header-enter {
-    opacity: 0;
-    transform: translateY(-20px);
+.video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 640px) {
+  .responsive-video {
+    padding-bottom: 75%; /* 4:3 aspect ratio (3 / 4 * 100% = 75%) for mobile */
   }
-  .header-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
-  }
-  .header-exit {
-    opacity: 1;
-  }
-  .header-exit-active {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 300ms, transform 300ms;
-  }
-  
-  /* Content Grid Animation */
-  .content-grid-enter {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .content-grid-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
-  }
-  .content-grid-exit {
-    opacity: 1;
-  }
-  .content-grid-exit-active {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 300ms, transform 300ms;
-  }
-  
+}

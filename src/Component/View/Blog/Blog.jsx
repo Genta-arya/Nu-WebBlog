@@ -211,21 +211,18 @@ const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [postings, setPostings] = useState([]);
   const [filteredPostings, setFilteredPostings] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const API_BASE_URL = 'https://api-blog-2coesnsgf-genta-arya.vercel.app/';
 
   useEffect(() => {
-    fetch(`https://api-blog-2coesnsgf-genta-arya.vercel.app/posting`)
-      .then((response) => response.json())
-      .then((postingsData) => {
+    const fetchPostings = async () => {
+      try {
+        const postingsData = await getPostings();
         setPostings(postingsData);
         setFilteredPostings(postingsData);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      });
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchPostings();
   }, []);
 
   useEffect(() => {
