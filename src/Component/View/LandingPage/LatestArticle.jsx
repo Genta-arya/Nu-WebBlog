@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 const LatestArticles = () => {
   const [latestArticles, setLatestArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const API_BASE_URL = 'https://api-blog-2coesnsgf-genta-arya.vercel.app/';
+  const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app/";
+  const url = "https://api-blog-nu-8w8s.vercel.app/";
 
   useEffect(() => {
-    fetch("https://api-blog-2coesnsgf-genta-arya.vercel.app/posting")
+    fetch("https://api-blog-nu-8w8s.vercel.app/posting")
       .then((response) => response.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -25,7 +26,6 @@ const LatestArticles = () => {
       });
   }, []);
 
-
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("en-US", options);
@@ -36,7 +36,7 @@ const LatestArticles = () => {
       <div className="flex justify-center">
         <h1 className="text-3xl font-bold mb-5">Artikel Terbaru</h1>
       </div>
-      <div className="h-96 overflow-y-auto ">
+      <div className="h-96 overflow-y-auto">
         {isLoading ? (
           <div>Loading...</div>
         ) : latestArticles.length > 0 ? (
@@ -46,11 +46,19 @@ const LatestArticles = () => {
                 key={article.id}
                 className="bg-white shadow-lg p-8 rounded-lg mb-4 hover:scale-90 pb-5"
               >
-                <img
-                  src="https://via.placeholder.com/300x200"
-                  alt="Placeholder Image"
-                  className="w-full h-48 object-cover"
-                />
+                {article.image ? (
+                  <img
+                    src={`${url}/${article.image}`}
+                    alt="Article Image"
+                    className="w-full h-48 object-cover"
+                  />
+                ) : (
+                  <img
+                    src="https://via.placeholder.com/300x200"
+                    alt="Placeholder Image"
+                    className="w-full h-48 object-cover"
+                  />
+                )}
                 <Link
                   to={`/detail/${article.id}`}
                   className="text-xl font-bold mb-2 hover:text-green-500"

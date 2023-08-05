@@ -8,6 +8,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { login, getPostings } from "../../Service/Api";
 import Navbar from "./Navbars";
 import Footer from "./Footer";
+import axios from "axios";
 
 const SearchNavbar = ({ setCategoryFilter, setSearchQuery, postings }) => {
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
@@ -211,6 +212,11 @@ const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [postings, setPostings] = useState([]);
   const [filteredPostings, setFilteredPostings] = useState([]);
+  const url = "https://api-blog-nu-8w8s.vercel.app/";
+  const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app";
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [postIdToDelete, setPostIdToDelete] = useState(null);
 
   useEffect(() => {
     const fetchPostings = async () => {
@@ -274,6 +280,41 @@ const BlogPage = () => {
     };
   }, []);
 
+  const fetchPostings = async () => {
+    try {
+      const postingsData = await getPostings();
+      setPostings(postingsData);
+      setFilteredPostings(postingsData);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleDeletePosting = (id) => {
+    setPostIdToDelete(id);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDelete = () => {
+    axios
+      .delete(`${API_BASE_URL}/posting/${postIdToDelete}`)
+      .then((response) => {
+        console.log("Postingan berhasil dihapus:", response.data);
+
+        fetchPostings();
+
+        setShowDeleteModal(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        console.log("Terjadi kesalahan saat menghapus data.");
+      });
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+  };
+
   return (
     <div
       className={`flex flex-col min-h-screen ${
@@ -294,11 +335,11 @@ const BlogPage = () => {
             {filteredPostings.map((posting) => (
               <div
                 key={posting.id}
-                className="bg-white shadow-md rounded-md overflow-hidden"
+                className="bg-white shadow-md rounded-md overflow-hidden relative"
               >
                 {posting.image ? (
                   <img
-                    src={posting.image}
+                    src={`${url}/${posting.image}`}
                     alt={posting.title}
                     className="w-full h-48 object-cover"
                   />
@@ -327,6 +368,41 @@ const BlogPage = () => {
                   <p className="text-gray-800">
                     {limitContent(posting.isi, 100)}
                   </p>
+
+                  {isLoggedIn && (
+                    <div className="bottom-4 right-4 flex justify-end mt-5">
+                      <button className="text-blue-500 mr-2">Edit</button>
+                      <button
+                        className="text-red-500"
+                        onClick={() => handleDeletePosting(posting.id)}
+                      >
+                        Hapus
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Custom Delete Confirmation Modal */}
+                  {showDeleteModal && (
+                    <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center  ">
+                      <div className="bg-white p-4 rounded shadow-md">
+                        <p>Apakah Anda yakin ingin menghapus postingan ini?</p>
+                        <div className="mt-4 flex justify-end">
+                          <button
+                            className="text-red-500"
+                            onClick={handleConfirmDelete}
+                          >
+                            Ya
+                          </button>
+                          <button
+                            className="text-blue-500 ml-2"
+                            onClick={handleCancelDelete}
+                          >
+                            Tidak
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

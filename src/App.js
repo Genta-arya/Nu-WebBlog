@@ -7,6 +7,7 @@ import DetailPage from "./Component/View/Blog/Detail";
 import ArsipPage from "./Component/View/Dashboard/Arsip";
 import Home from "./Component/View/LandingPage/Home";
 import Sejarah from "./Component/View/LandingPage/SejarahNu";
+import PostingArtikel from "./Component/View/Dashboard/Posting";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/sejarah-nu" element={<Sejarah />} />
           <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/arsip" element={<ArsipPage />} />
+          <Route path="/posting-artikel" element={<PostingArtikel />} />
         </Routes>
       </div>
     </Router>

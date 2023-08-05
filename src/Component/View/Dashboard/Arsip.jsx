@@ -230,6 +230,7 @@ const formatDate = (date) => {
 };
 const ArsipPage = () => {
   const [postingsByCategory, setPostingsByCategory] = useState({});
+  const url = "https://api-blog-nu-8w8s.vercel.app/";
 
   useEffect(() => {
     const fetchPostings = async () => {
@@ -268,16 +269,21 @@ const ArsipPage = () => {
               Artikel : {category}
             </h2>
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {postingsByCategory[category].map((posting) => (
-                <div
-                  key={posting.id}
-                  className="bg-white shadow-md rounded-lg p-4"
-                >
+            {postingsByCategory[category].map((posting) => (
+              <div key={posting.id} className="bg-white shadow-md rounded-lg p-4">
+                {posting.image ? (
                   <img
-                    src={`https://via.placeholder.com/400x200`}
+                    src={`${url}/${posting.image}`}
                     alt={posting.title}
                     className="w-full h-40 object-cover rounded-lg mb-4"
                   />
+                ) : (
+                  <img
+                    src="https://via.placeholder.com/400x200" // Gunakan placeholder jika posting.image null
+                    alt="Placeholder Image"
+                    className="w-full h-40 object-cover rounded-lg mb-4"
+                  />
+                )}
                   <p>
                     By {posting.author} | {formatDate(posting.date)}
                   </p>

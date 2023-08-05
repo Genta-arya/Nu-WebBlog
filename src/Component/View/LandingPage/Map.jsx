@@ -4,7 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIcon from "../../../Asset/marker.png";
 
-const Map = () => {
+export default function Map  () {
   const centerCoordinates = [-1.8342907881587442, 109.9663793966808];
 
   const customIcon = L.icon({
@@ -69,4 +69,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+

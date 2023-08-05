@@ -12,6 +12,7 @@ const DetailPage = () => {
   const [relatedPostings, setRelatedPostings] = useState([]);
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const url = "https://api-blog-nu-8w8s.vercel.app/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,12 +68,11 @@ const DetailPage = () => {
             <div className="max-w-3xl bg-white rounded-lg shadow-md p-6 mt-0 mx-auto">
               <h2 className="text-3xl font-bold mb-4">{posting.title}</h2>
               <p className="text-gray-800 mb-2">
-                 By {posting.author} |{" "}
-                {formatDate(posting.date)}
+                By {posting.author} | {formatDate(posting.date)}
               </p>
               {posting.image ? (
                 <img
-                  src={posting.image}
+                  src={`${url}/${posting.image}`}
                   alt={posting.title}
                   className="w-full h-auto mb-4 rounded"
                 />
@@ -113,7 +113,7 @@ const DetailPage = () => {
                     <div className="aspect-w-2 aspect-h-3">
                       {post.image ? (
                         <img
-                          src={post.image}
+                        src={`${url}/${post.image}`}
                           alt={post.title}
                           className="object-cover rounded"
                         />
