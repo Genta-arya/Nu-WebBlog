@@ -212,8 +212,8 @@ const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [postings, setPostings] = useState([]);
   const [filteredPostings, setFilteredPostings] = useState([]);
-  const url = "https://api-blog-nu-8w8s.vercel.app/";
-  const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app";
+  const url = "https://api-blog-nu-8uwk.vercel.app/";
+  const API_BASE_URL = "https://api-blog-nu-8uwk.vercel.app/";
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState(null);

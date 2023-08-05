@@ -12,7 +12,7 @@ const DetailPage = () => {
   const [relatedPostings, setRelatedPostings] = useState([]);
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-  const url = "https://api-blog-nu-8w8s.vercel.app/";
+  const url = "https://api-blog-nu-8uwk.vercel.app/";
 
   useEffect(() => {
     const handleScroll = () => {

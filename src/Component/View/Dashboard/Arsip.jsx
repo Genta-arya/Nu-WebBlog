@@ -230,7 +230,7 @@ const formatDate = (date) => {
 };
 const ArsipPage = () => {
   const [postingsByCategory, setPostingsByCategory] = useState({});
-  const url = "https://api-blog-nu-8w8s.vercel.app/";
+  const url = "https://api-blog-nu-8uwk.vercel.app/";
 
   useEffect(() => {
     const fetchPostings = async () => {
