@@ -296,7 +296,7 @@ const BlogPage = () => {
   };
 
   const handleConfirmDelete = () => {
-    fetch(`https://api-blog-nu-8uwk.vercel.app/posting/${postIdToDelete}`, {
+    fetch(`https://api-blog-nu-8w8s-1y9mpvq8b-genta-arya.vercel.app/posting/${postIdToDelete}`, {
       method: "DELETE",
     })
       .then((response) => {
