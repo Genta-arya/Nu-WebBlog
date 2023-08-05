@@ -3,8 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-const API_BASE_URL = "http://192.168.1.6:3001";
-// const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app";
+// const API_BASE_URL = "http://192.168.1.6:3001";
+const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app";
 
 const PostingArtikel = () => {
   const [title, setTitle] = useState("");
