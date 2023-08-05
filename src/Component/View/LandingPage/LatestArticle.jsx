@@ -5,10 +5,10 @@ const LatestArticles = () => {
   const [latestArticles, setLatestArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app/";
-  const url = "https://api-blog-nu-8uwk.vercel.app/posting/";
+  const url = "https://api-blog-nu-8uwk.vercel.app/";
 
   useEffect(() => {
-    fetch("https://api-blog-nu-8uwk.vercel.app/posting")
+    fetch("https://api-blog-nu-8w8s-1y9mpvq8b-genta-arya.vercel.app/posting/")
       .then((response) => response.json())
       .then((data) => {
         if (data && data.length > 0) {
