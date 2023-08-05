@@ -49,7 +49,7 @@ const Dashboard = () => {
     <div className="bg-gray-200 min-h-screen">
       <header className="bg-white shadow">
         <div className="container mx-auto py-4 px-6 flex justify-between items-center">
-          <h1 className="text-3xl font-semibold text-gray-800">Dashboard</h1>
+        
           <div>
             <p className="text-gray-600">
               Welcome, <br></br><span className="font-semibold">{username}</span> (
