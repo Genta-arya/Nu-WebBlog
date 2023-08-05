@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
+import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 // const API_BASE_URL = "http://192.168.1.6:3001";
+import logo from "../../../Asset/Header.png";
 const API_BASE_URL = "https://api-blog-nu-8w8s.vercel.app";
 
 const PostingArtikel = () => {
@@ -23,7 +25,6 @@ const PostingArtikel = () => {
       ["clean"],
     ],
   };
-  
 
   const quillFormats = [
     "header",
@@ -46,12 +47,12 @@ const PostingArtikel = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Mengambil teks dari konten HTML di ReactQuill menggunakan DOM API
     const plainTextIsi = document.createElement("div");
     plainTextIsi.innerHTML = isi;
     const isiPlainText = plainTextIsi.textContent;
-  
+
     // Buat objek data dari state form
     const data = new FormData();
     data.append("title", title);
@@ -59,26 +60,26 @@ const PostingArtikel = () => {
     data.append("category", category);
     data.append("author", localStorage.getItem("username"));
     data.append("image", gambar); // Menambahkan gambar ke FormData
-  
+
     try {
       // Make the POST request using fetch
       const response = await fetch(`${API_BASE_URL}/posting`, {
         method: "POST",
         body: data,
       });
-  
+
       if (!response.ok) {
         // Handle error response
         throw new Error("Network response was not ok");
       }
-  
+
       // Reset fields setelah data berhasil disimpan
       setTitle("");
       setIsi("");
       setCategory("");
       setThumbnail(null);
       console.log("Data berhasil disimpan");
-  
+
       // Show the countdown pop-up and navigate after 3 seconds
       setCountdown(3);
       setTimeout(() => {
@@ -94,11 +95,13 @@ const PostingArtikel = () => {
   const quillRef = useRef();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-5">
       <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
-        <h1 className="text-3xl font-semibold mb-6 flex justify-center">
-          Tambah Artikel
-        </h1>
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-64 h-auto object-contain mx-auto mb-5"
+        />
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -169,7 +172,6 @@ const PostingArtikel = () => {
               onChange={handleThumbnailChange}
               accept="image/*"
               className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500"
-              
             />
           </div>
 
@@ -201,10 +203,7 @@ const PostingArtikel = () => {
       {countdown > 0 && (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-opacity-50 bg-black">
           <div className="bg-white p-4 rounded shadow-md">
-            <p>
-             Posting Berhasil, akan kembali ke halaman dashboard
-              
-            </p>
+            <p>Posting Berhasil, akan kembali ke halaman dashboard</p>
           </div>
         </div>
       )}
