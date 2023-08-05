@@ -15,6 +15,7 @@ const PostingArtikel = () => {
   const [gambar, setThumbnail] = useState(null);
   const [countdown, setCountdown] = useState(0);
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const quillModules = {
     toolbar: [
@@ -43,6 +44,9 @@ const PostingArtikel = () => {
     if (file) {
       setThumbnail(file); // Simpan file gambar langsung ke state thumbnail
     }
+  };
+  const handleThumbnailRemove = () => {
+    setThumbnail(null); // Hapus gambar dari state thumbnail
   };
 
   const handleSubmit = async (e) => {
@@ -87,7 +91,7 @@ const PostingArtikel = () => {
       }, 3000);
     } catch (error) {
       console.error("Error:", error);
-      console.log("Terjadi kesalahan saat menyimpan data.");
+      setError("Mohon maaf sementara upload gambar belum tersedia");
     }
   };
 
@@ -160,11 +164,20 @@ const PostingArtikel = () => {
               Thumbnail:
             </label>
             {gambar && (
-              <img
-                src={URL.createObjectURL(gambar)} // Tampilkan gambar yang dipilih menggunakan URL.createObjectURL
-                alt="Thumbnail"
-                className="w-24 h-24 mb-2 object-cover rounded"
-              />
+              <div className="flex items-center">
+                <img
+                  src={URL.createObjectURL(gambar)} // Tampilkan gambar yang dipilih menggunakan URL.createObjectURL
+                  alt="Thumbnail"
+                  className="w-24 h-24 mb-2 object-cover rounded"
+                />
+                <button
+                  type="button"
+                  onClick={handleThumbnailRemove} // Panggil fungsi handleThumbnailRemove saat tombol "Hapus" ditekan
+                  className="ml-4 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded focus:outline-none"
+                >
+                  x
+                </button>
+              </div>
             )}
             <input
               type="file"
@@ -173,8 +186,8 @@ const PostingArtikel = () => {
               accept="image/*"
               className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500"
             />
+            {error && <p className="text-red-500">{error}</p>}
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="isi"
@@ -207,6 +220,7 @@ const PostingArtikel = () => {
           </div>
         </div>
       )}
+       
     </div>
   );
 };

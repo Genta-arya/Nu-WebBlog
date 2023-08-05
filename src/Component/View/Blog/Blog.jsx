@@ -213,7 +213,7 @@ const BlogPage = () => {
   const [postings, setPostings] = useState([]);
   const [filteredPostings, setFilteredPostings] = useState([]);
   const url = "https://api-blog-nu-8uwk.vercel.app/";
-  const API_BASE_URL = "https://api-blog-nu-8uwk.vercel.app/";
+  const API_BASE_URL = "https://api-blog-nu-8uwk.vercel.app";
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState(null);
@@ -296,13 +296,18 @@ const BlogPage = () => {
   };
 
   const handleConfirmDelete = () => {
-    axios
-      .delete(`${API_BASE_URL}/posting/${postIdToDelete}`)
+    fetch(`https://api-blog-nu-8uwk.vercel.app/posting/${postIdToDelete}`, {
+      method: "DELETE",
+    })
       .then((response) => {
-        console.log("Postingan berhasil dihapus:", response.data);
-
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("Postingan berhasil dihapus.");
+  
+        // Jika Anda memiliki fungsi fetchPostings untuk mengambil data postingan kembali, Anda dapat memanggilnya di sini.
         fetchPostings();
-
+  
         setShowDeleteModal(false);
       })
       .catch((error) => {
@@ -310,6 +315,7 @@ const BlogPage = () => {
         console.log("Terjadi kesalahan saat menghapus data.");
       });
   };
+  
 
   const handleCancelDelete = () => {
     setShowDeleteModal(false);
